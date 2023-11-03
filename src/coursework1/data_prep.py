@@ -15,10 +15,16 @@ Inputs:
     custom_column_label: When the dataframe is returned, the column label will be changed to this
     column_label_2: The column label of the worker category column, this should always be "hours_worked"
 '''
-def csv_sort(
-        worker_categories, worker_categories_friendly, df_prepared, column_label,
-        custom_column_label, column_label_2
-        ):
+def csv_sort(df_prepared, column_label, custom_column_label, column_label_2):
+        # Sets worker categories in order and simpler names for them
+    worker_categories = [
+        "Full-time: 49 or more hours worked","Full-time: 31 to 48 hours worked",
+        "Part-time: 16 to 30 hours worked", "Part-time: 15 hours or less worked"
+        ]
+    worker_categories_friendly = [
+        "Hours worked: 49+", "Hours worked: 31-48", 
+        "Hours worked: 16-30", "Hours worked: 1-15"
+        ]
     for i, category in enumerate(worker_categories):
         # Sorts the data by worker category
         category_df = df_dropped[df_dropped[column_label_2] == category]
@@ -37,6 +43,10 @@ def csv_sort(
             df_prepared = df_prepared.join(next_column)
     return(df_prepared)
 
+```
+This is a function to print a summary of the data
+```
+
 # Reads csv file and converts it to dataframe to be used throughout the code
 csvfile = Path(__file__).parent.joinpath("data", "dataset.csv")
 raw_data = pd.read_csv(csvfile)
@@ -47,38 +57,21 @@ df_dropped = df.drop(['lsoa21cd', "lsoa21nm", "lad22cd"], axis = 1)
 
 # Drops rows with missing values
 df_dropped = df_dropped.dropna()
-'''
-This next section prepares the data by sorting
-the number of people in each working time bracket per area
-'''
-# Sets worker categories in order and simpler names for them
-worker_categories = [
-    "Full-time: 49 or more hours worked","Full-time: 31 to 48 hours worked",
-    "Part-time: 16 to 30 hours worked", "Part-time: 15 hours or less worked"
-    ]
-worker_categories_friendly = [
-    "Hours worked: 49+", "Hours worked: 31-48", 
-    "Hours worked: 16-30", "Hours worked: 1-15"
-    ]
 
 # Creates an empty dataframe to be filled later
 df_prepared = pd.DataFrame()
 
-# For each category of worker, takes the number of them and sorts it by area and adds it to the dataframe
-df_prepared = csv_sort(
-    worker_categories, worker_categories_friendly, df_prepared,
-    "lad22nm", "Area", "hours_worked"
-    )
+# Runs the CSV sort function and sorts by area
+df_prepared = csv_sort(df_prepared,"lad22nm", "Area", "hours_worked")
 
-# Outputs then saves the prepared data to a csv file with the appropriate path and name
+# Runs the CSV sort function and sorts by occupation
 print(df_prepared)
 df_prepared.to_csv(Path(__file__).parent.joinpath("data", "dataset_prepared.csv"), index=False)
 
+summary(df_prepared)
+
 # For each category of worker, take the number of them and sorts it by occupation and adds it to the dataframe
-df_prepared = csv_sort(
-    worker_categories, worker_categories_friendly, df_prepared,
-    "occupation", "Occupation", "hours_worked"
-    )
+df_prepared = csv_sort(df_prepared,"occupation", "Occupation", "hours_worked")
 
 # The job titles have a number at the start, this extra line removes them
 df_prepared["Occupation"] = df_prepared["Occupation"].str.slice(3)
