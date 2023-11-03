@@ -4,7 +4,11 @@ My dataset had multiple CSVs so I selected one which seemed like it had useful a
 
 The dataset I selected contained, how many hours a person worked, the area where they lived and what their occupation was. This dataset didn't have any numbers in its original state so I decided the best place to start was by summing up the different categories so I could compare them against each other to answer questions and create graphs.
 
-I then created a dataframe using pandas and pathlib. I didn't need the first 3 columns so I used pandas to drop them.  Despite the data being quite clean from the start, I used pandas to drop any null values so that the code would still work correctly for other datasets which may not be clean. I then used pandas to reorganise the data into a new dataframe with all of the columns in the order I needed them. At the end of the code used pandas to write that dataframe to a new CSV, that CSV is now fully prepared for future use.
+I then created a dataframe using pandas and pathlib. I didn't need the first 3 columns so I used pandas to drop them.  Despite the data being quite clean from the start, I used pandas to drop any null values so that the code would still work correctly for other datasets which may not be clean.
+
+My dataset had the workers split into different categories based on how many hours they worked, so I created a function which used pandas to create a new dataframe of how many workers were in each category and compare them against a given criteria which the function takes as an argument. I decided to use a function so that multiple different criteria could be sorted into seperate data frames by calling the function again.
+
+After each time I called the function, I saved the dataframe as a new CSV. I decided to use seperate CSVs instead of combining them all together since this would mean when I load a csv into a dataframe, I will only be loading the data I need which is more efficient. This is helpful as my dataset is quite large with nearly 180,000 rows. Using multiple files also means that when plotting graphs, I won't need to drop unnecessary columns since I'll be loading a dataset which already has them removed.
 
 Finally, I adjusted the linter to allow up to 120 characters rather than 79 per line. Trying to keep the lines under 80 characters forced me to use shorter, less readable variable names and split lines.
 ## Product and Project Definition
