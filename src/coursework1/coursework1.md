@@ -1,6 +1,12 @@
 # Coursework 1 Markdown
 ## Explanation
-My dataset had multiple CSVs so I selected one which seemed like it had useful and versatile data. I then created a dataframe using pandas and pathlib. I didn't need the first 3 columns so I used pandas to drop them.  Despite the data being quite clean from the start, I used pandas to drop any null values so that the code would still work correctly for other datasets which may not be clean. I then used pandas to reorganise the data into a new dataframe with all of the columns in the order I needed them. Finally I used pandas to write that dataframe to a new CSV, this CSV is now fully prepared for future use.
+My dataset had multiple CSVs so I selected one which seemed like it had useful and versatile data.
+
+The dataset I selected contained, how many hours a person worked, the area where they lived and what their occupation was. This dataset didn't have any numbers in its original state so I decided the best place to start was by summing up the different categories so I could compare them against each other to answer questions and create graphs.
+
+I then created a dataframe using pandas and pathlib. I didn't need the first 3 columns so I used pandas to drop them.  Despite the data being quite clean from the start, I used pandas to drop any null values so that the code would still work correctly for other datasets which may not be clean. I then used pandas to reorganise the data into a new dataframe with all of the columns in the order I needed them. At the end of the code used pandas to write that dataframe to a new CSV, that CSV is now fully prepared for future use.
+
+Finally, I adjusted the linter to allow up to 120 characters rather than 79 per line. Trying to keep the lines under 80 characters forced me to use shorter, less readable variable names and split lines.
 ## Product and Project Definition
 ### Product Overview
 This coursework involves creating two webapps. 
