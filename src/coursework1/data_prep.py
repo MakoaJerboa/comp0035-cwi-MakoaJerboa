@@ -43,9 +43,16 @@ def csv_sort(df_prepared, column_label, custom_column_label, column_label_2):
             df_prepared = df_prepared.join(next_column)
     return(df_prepared)
 
-```
+'''
 This is a function to print a summary of the data
-```
+
+Inputs:
+    df: The dataframe to be summarised
+'''
+def summary(df):
+    print("The number of rows and columns in the data frame are: ", df.shape)
+    print("The data types of the columns are: ", "\n", df.dtypes)
+    print("The first 5 rows of the data are: ", "\n" , df.head())
 
 # Reads csv file and converts it to dataframe to be used throughout the code
 csvfile = Path(__file__).parent.joinpath("data", "dataset.csv")
@@ -64,18 +71,16 @@ df_prepared = pd.DataFrame()
 # Runs the CSV sort function and sorts by area
 df_prepared = csv_sort(df_prepared,"lad22nm", "Area", "hours_worked")
 
-# Runs the CSV sort function and sorts by occupation
-print(df_prepared)
+# Outputs a summary of the dataframe, then saves it to a csv file
+summary(df_prepared)
 df_prepared.to_csv(Path(__file__).parent.joinpath("data", "dataset_prepared.csv"), index=False)
 
-summary(df_prepared)
-
-# For each category of worker, take the number of them and sorts it by occupation and adds it to the dataframe
+# Runs the CSV sort function and sorts by occupation
 df_prepared = csv_sort(df_prepared,"occupation", "Occupation", "hours_worked")
 
 # The job titles have a number at the start, this extra line removes them
 df_prepared["Occupation"] = df_prepared["Occupation"].str.slice(3)
 
-# Outputs then saves the prepared data to a csv file with the appropriate path and name
-print(df_prepared)
+# Outputs a summary of the dataframe, then saves it to a csv file
+summary(df_prepared)
 df_prepared.to_csv(Path(__file__).parent.joinpath("data", "dataset_prepared_2.csv"), index=False)
