@@ -1,16 +1,22 @@
 # Coursework 1 Markdown
 ## Explanation
-My dataset had multiple CSVs so I selected one which seemed like it had useful and versatile data.
+### Step 1: Selecting Appropriate Data
+My dataset had multiple Excel files, after examining the various datasets I decided to use the census data on hours worked in different areas in 2011 and 2021. I decided to use this data as it seemed versatile, I could explore the trends on average hours worked in different areas, and also see how these values changed between the 2 years.
 
-The dataset I selected contained, how many hours a person worked, the area where they lived and what their occupation was. This dataset didn't have any numbers in its original state so I decided the best place to start was by summing up the different categories so I could compare them against each other to answer questions and create graphs.
+### Step 2: Importing the Data
+My dataset had multiple books inside the Excel file. I used pathlib and pandas to read the books for 2011 and 2021 into seperate dataframes. Some of the columns contained extra area code data. Since the second column already had human readable names for the areas, I didn't need the other columns so I used pandas to drop them. From observation of the Excel, the data seemed quite clean. However to ensure there were no null values present I used pandas to drop any to ensure they didn't carry through and become problematic later on.
 
-I then created a dataframe using pandas and pathlib. I didn't need the first 3 columns so I used pandas to drop them.  Despite the data being quite clean from the start, I used pandas to drop any null values so that the code would still work correctly for other datasets which may not be clean.
+### Step 3: Transforming the Data
+My dataset had the workers split into different categories based on how many hours they worked. Each row also had the area in which the data was taken, however these areas were split into smaller sub areas with area codes. I wanted to consider the total number of workers in each major area so I created a function which used pandas to sum all these rows together and return that as a new dataframe. I decided to use a function so that I could feed the dataframe for each year into it seperately and not have to repeat any code. I decided to consider only major areas and ignore the smaller ones so that my dataset would have fewer rows, thereby allowing trends to be more clearly visible across larger areas. 
 
-My dataset had the workers split into different categories based on how many hours they worked, so I created a function which used pandas to create a new dataframe of how many workers were in each category and compare them against a given criteria which the function takes as an argument. I decided to use a function so that multiple different criteria could be sorted into seperate data frames by calling the function again.
+### Step 4: Examining the Data
+I created a function called summary to print out general information about the dataframe. It prints out the number of rows and columns in the dataframe, then the first and last 5 lines of it, finally it prints the datatypes in the dataframe. Because my original data had no numbers in it, outliers were not really a concern, my main concern when summing up how many people were in each category was if there were any typos which would cause a line to not be grouped correctly. This step shows how many rows and columns there are in the data, so if there was an extra column with the same data spelled slightly differently this step would reveal that, looking at the datatypes within the function would also help diagnose and potential problems in the dataset if anything unexpected was present. Finally printing the first and last few lines of the dataset is a simple common sense check which would reveal and obvious problems with the data such as row being labelled incorrectly or all of the values being completely incorrect. I also considered using boxplots or histograms to verify the integrity of the data and check for outliers, however to effectively ensure there were no outliers present, several graphs would have to be generated, so I decided these simple measures were more practical.
 
-After each time I called the function, I saved the dataframe as a new CSV. I decided to use seperate CSVs instead of combining them all together since this would mean when I load a csv into a dataframe, I will only be loading the data I need which is more efficient. This is helpful as my dataset is quite large with nearly 180,000 rows. Using multiple files also means that when plotting graphs, I won't need to drop unnecessary columns since I'll be loading a dataset which already has them removed.
+### Step 6: Saving the Data
+I decided to save the returned dataframes to new CSVs manually, while it was possible to make a function for this, doing so would be significantly longer and less readable than just copying the same line twice. However if I had several dataframe it would have been appropriate to use a function. I decided to use seperate CSVs for each year instead of combining them together since it would make my future code more efficient. Since I would only be loading the data I intend to use, my code would require less system resources to run. Using multiple files also means that when loading dataframes in future code, I won't need to drop unnecessary columns since I'll be loading from a CSV which has only the columns I need for that specific part.
 
-Finally, I adjusted the linter to allow up to 120 characters rather than 79 per line. Trying to keep the lines under 80 characters forced me to use shorter, less readable variable names and split lines.
+### Linter Adjustments
+I adjusted the linter to allow up to 120 characters rather than 79 per line. Trying to keep the lines under 80 characters forced me to use shorter, less readable variable names and split lines making them harder to follow.
 ## Product and Project Definition
 ### Product Overview
 This coursework involves creating two webapps. 
@@ -19,6 +25,7 @@ The first app will be a REST API which will allow developers to access and use m
 
 The second app will be a data visualisation / dashboard app. This app will be used to repesent that data in a visual way with graphs. Since my dataset is based on census data, the target audience for this app would be researchers such as students, politicians or journalists.
 ### Persona
+
 ## Tools and Techniques
 ### Source Code Control
 https://github.com/ucl-comp0035/comp0035-cwi-MakoaJerboa
