@@ -19,17 +19,6 @@ def clean(df):
     return(df)
 
 '''
-This is a function to create a histogram of the data to check for outliers
-
-Inputs:
-    df: The dataframe to be plotted
-'''
-def histogram(df):
-    # Creates a bar chart
-    plt.bar(x=0, height=10, width=0.8, bottom=None, align='center', data=df)
-    plt.show
-
-'''
 This is a function to add up all values for each area so the totals can be compared
 
 Inputs:
@@ -70,10 +59,6 @@ df_2021 = clean(df_2021)
 # Passes the dataframe for each year into the function to sum the values
 sum_2011 = sum(df_2011)
 sum_2021 = sum(df_2021)
-
-# Plots histograms of the data to ensure it is valid
-histogram(df_2011)
-histogram(df_2021)
 
 # Summarises the data for each year to see general information about each dataframe
 print("2011 data summary:",summary(sum_2011))
