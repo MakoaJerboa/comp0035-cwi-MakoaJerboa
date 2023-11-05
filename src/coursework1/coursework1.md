@@ -34,4 +34,4 @@ https://github.com/ucl-comp0035/comp0035-cwi-MakoaJerboa
 
 GitHub was used for source code control, the GitHub extension was also used in Visual Studio Code to allow pulling and pushing from within the editor.
 ### Use of AI
-GitHub Copilot autocomplete was used for the data preparation section. The loop near the end of the code was also quite long, I asked github copilot to shorten it and combined its shortened code with my original loop.
+GitHub Copilot autocomplete was enabled and used throughout the data preparation section.
