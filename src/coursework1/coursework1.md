@@ -4,7 +4,7 @@
 My dataset had multiple Excel files, after examining the various datasets I decided to use the census data on hours worked in different areas in 2011 and 2021. I decided to use this data as it seemed versatile, I could explore the trends on average hours worked in different areas, and also see how these values changed between the 2 years.
 
 ### Step 2: Importing the Data
-My dataset had multiple books inside the Excel file. I used pathlib and pandas to read the books for 2011 and 2021 into seperate dataframes. Some of the columns contained extra area code data. Since the second column already had human readable names for the areas, I didn't need the other columns so I used pandas to drop them. From observation of the Excel, the data seemed quite clean. However to ensure there were no null values present I used pandas to drop any to ensure they didn't carry through and become problematic later on.
+My dataset had multiple books inside the Excel file. I used pathlib and pandas to read the books for 2011 and 2021 into seperate dataframes. There was a third book showing the change between years, but I decided not to import it since I could just add or subtract the data myself once I've finished transforming it. This would also mean that I don't have to consider negative numbers at this stage. Some of the columns contained extra area code data. Since the second column already had human readable names for the areas, I didn't need the other columns so I used pandas to drop them. From observation of the Excel, the data seemed quite clean. However to ensure there were no null values present I used pandas to drop any to ensure they didn't carry through and become problematic later on.
 
 ### Step 3: Transforming the Data
 My dataset had the workers split into different categories based on how many hours they worked. Each row also had the area in which the data was taken, however these areas were split into smaller sub areas with area codes. I wanted to consider the total number of workers in each major area so I created a function which used pandas to sum all these rows together and return that as a new dataframe. I decided to use a function so that I could feed the dataframe for each year into it seperately and not have to repeat any code. I decided to consider only major areas and ignore the smaller ones so that my dataset would have fewer rows, thereby allowing trends to be more clearly visible across larger areas. 
@@ -25,6 +25,7 @@ The first app will be a REST API which will allow developers to access and use m
 
 The second app will be a data visualisation / dashboard app. This app will be used to repesent that data in a visual way with graphs. Since my dataset is based on census data, the target audience for this app would be researchers such as students, politicians or journalists.
 ### Persona
+![Persona](persona.png)
 
 ## Tools and Techniques
 ### Source Code Control
