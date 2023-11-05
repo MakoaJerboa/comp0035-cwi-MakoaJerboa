@@ -25,7 +25,7 @@ The first app will be a REST API which will allow developers to access and use m
 
 The second app will be a data visualisation / dashboard app. This app will be used to repesent that data in a visual way with graphs. Since my dataset is based on census data, the target audience for this app would be researchers such as students, politicians or journalists.
 ### Persona
-![Persona](persona.png)
+![Persona](Persona.png)
 
 ## Tools and Techniques
 ### Source Code Control
