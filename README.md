@@ -18,3 +18,16 @@ Do not delete, move or rename the following files and folders:
 - `src/coursework1` and the files within it: `__init__.py`,`data_prep.py`
 - `src/coursework2` and the files within it: `__init__.py`,`employee.py`
 - `src/coursework2/tests` and the files within it: `__init__.py`,`test_code.py`, `test_employee.py`
+
+# Set Up
+## Create Virtual Enviroment
+In the terminal, type "py -m venv .venv" for Windows or "python3 -m venv .venv" for Unix/macOS (without the quotes)
+
+## Activate Virtual Environment
+If your IDE does not prompt you to activate the virtual environment, type ".\env\Scripts\activate" into the terminal for Windows or "source env/bin/activate" for Unix/macOS (without the quotes). Then close the terminal and open a new one, the virtual environment should now be active.
+
+## Installing Requirements
+In the terminal type "pip install -r requirements.txt"
+
+## Run
+The code should now run

@@ -3,7 +3,6 @@
 # Importing libraries
 from pathlib import Path
 import pandas as pd
-import matplotlib.pyplot as plt
 
 '''
 This is a function to clean the data to ensure no missing values are present
@@ -59,7 +58,6 @@ df_2021 = clean(df_2021)
 # Passes the dataframe for each year into the function to sum the values
 sum_2011 = sum(df_2011)
 sum_2021 = sum(df_2021)
-
 # Summarises the data for each year to see general information about each dataframe
 print("2011 data summary:",summary(sum_2011))
 print("2021 data summary:",summary(sum_2021))
