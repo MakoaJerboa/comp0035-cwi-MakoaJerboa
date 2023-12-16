@@ -14,7 +14,7 @@ Some requirements I want:
 
 UI should be simple with most options/menus clearly visible
 
-Graphs must accurately represent data
+Graphs must accurately represent data, and be intuitive to understand
 
 Page shoud load on low end hardware so only load things which are needed / minimise system overhead
 
