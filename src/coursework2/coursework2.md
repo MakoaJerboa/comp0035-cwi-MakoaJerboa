@@ -8,6 +8,18 @@
 - For prioritising, I will use MoSCoW. This format is good because it clearly ranks which requirements are the most important but also considers which requirements are good but impractical to implement considering factors like time or budget needed compared to the value the function would provide.
 
 ### Prioritised requirements
+My APP2 is a data visualisation dashboard
+
+Some requirements I want:
+
+UI should be simple with most options/menus clearly visible
+
+Graphs must accurately represent data
+
+Page shoud load on low end hardware so only load things which are needed / minimise system overhead
+
+Users should be able to compare things easily, either with multiple on one graph or multiple things side by side
+
 Insert table/image of table here
 ## Design
 ### Interface design
