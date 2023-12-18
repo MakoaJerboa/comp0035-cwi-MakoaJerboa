@@ -1,11 +1,11 @@
 # Coursework 2 Markdown
 ## Requirements
 ### Explanation of the choice of techniques
-- For eliciting, I will use brainstorming. Since we cannot involve others with the coursework, we are restricted only to methods which can be done individually. Amongst these methods I have decided to use brainstorming since it is a simple and efficient way to consider many ideas simultaneously and evaluate which ones should be kept for the following sections.
+- For eliciting, I will use brainstorming. Since we cannot involve others with the coursework, we are restricted only to methods which can be done individually. Amongst these methods I have decided to use brainstorming since it is a simple and efficient way to consider many ideas simultaneously and evaluate which ones should be kept for the following sections. This will allow me to draft all of my ideas and compare their effectivenesses at acheiving the desired results against one another, and then select the best method for achieving the desired result
 
-- For documenting, I will use user stories. This format will help me focus on the user and how they would react to each requirement keeping the requirements more focussed on my target audience. It also helps document why each requirement is necessary which will help with prioritisation as well.
+- For documenting, I will use user stories. This format will help me focus on the user and how they would react to each requirement keeping the requirements more focussed on my target audience. It also helps document why each requirement is necessary which will help with prioritisation as well. User stories are also helpful as they allow one use case to lead to multiple requirements. A user may have one overall need, but if said need has many acceptance criteria it would generate many requirements.
 
-- For prioritising, I will use MoSCoW. This format is good because it clearly ranks which requirements are the most important but also considers which requirements are good but impractical to implement considering factors like time or budget needed compared to the value the function would provide.
+- For prioritising, I will use MoSCoW. This format is good because it clearly ranks which requirements are the most important but also considers which requirements are good but impractical to implement considering factors like time or budget needed compared to the value the function would provide. This will help me focus most of my design efforts on the requirements which are the most necessary, while allowing more flexibility to potentially add more quality of life and additional features later on if there is enough time.
 
 ### Prioritised requirements
 My APP2 is a data visualisation dashboard
@@ -67,6 +67,7 @@ Acceptance criteria:
 | App should function across different operating systems | Should have |
 | Togglable graphs | Should have |
 | Separate comparison graph | Must have |
+| Login system | Won't have for now |
 ## Design
 ### Interface design
 ![Framework](./images/Framework.png)
@@ -87,8 +88,10 @@ In the framework screenshots, I showed different areas selected for the first tw
 In the final screenshot, it is shown that the comparison graph does not have a dropdown menu. This is because it just shows a comparison between the other 2 graphs which the user has already configured to their liking. I decided that not having a dropdown would avoid misleading the user into thinking the third graph was independant from the other two.
 
 For the comparison graph, I could have designed it to be independant from the other two, however this would require it to have its own dropdown menu with double the amount of options that the other graphs had. I decided to avoid this as having that many options could be confusing to navigate.
+
+It would be nice to allow the user to save the selected options of their graph to an account so they can later resume where they left off. However this feature would offer limited usefulness compared to the time and effort required to implement it, meaning I've decided not to include it as of now. Not including this feature will allow my database to not need a server and will also mean that I don't have to have a separate database to store login credentials, simplifying the program. This would also help avoid security risks, since if one of the potential users of this app would be politicians, I would have to ensure passwords are stored securely and not in plaintext.
 ### Database design
 
 ![ERDiagram](./images/ERDiagram.png)
 
-For this database, normalising the data is not necessary since I already cleaned the data prepartion step. Due to the nature of my data, I only needed 3 entities in the database. There are 2 years, the data for which is stored in 2 separate CSV files. Within each year there is data for several areas, and each area has several occupations, each occupation has a number stating how many workers there are in that occupation for that area for that year.
+For my data, there are 2 years, the data for which is stored in 2 separate CSV files. When creating this database, normalising the data will not be necessary since I already cleaned the data prepartion step, ensuring there were no null values and dropping any unnecessary columns. Due to the nature of my data, I only needed 3 entities in the database. I will store the year in 1 entity with an integer being used to store the data, I will store the name of the area in a string in another entity, and I will store the name of the occupation along with how many workers are performing that occupation in the final entity. The relationships for each entity are one to many. Within each year there is data for several areas, and each area has several occupations, each occupation has a number stating how many workers there are in that occupation for that area for that year.
